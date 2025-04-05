@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "repository": {
@@ -19,6 +18,7 @@
   "homepage": "https://github.com/Jayesh-27/Web-Shooter#readme",
   "description": "",
   "dependencies": {
+    "express": "^4.18.2",
     "ws": "^8.18.1"
   }
 }
