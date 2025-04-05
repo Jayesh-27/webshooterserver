@@ -1,0 +1,24 @@
+{
+  "name": "web-shooters",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jayesh-27/Web-Shooter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jayesh-27/Web-Shooter/issues"
+  },
+  "homepage": "https://github.com/Jayesh-27/Web-Shooter#readme",
+  "description": "",
+  "dependencies": {
+    "ws": "^8.18.1"
+  }
+}
