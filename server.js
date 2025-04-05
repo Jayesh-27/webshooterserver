@@ -1,19 +1,23 @@
 const WebSocket = require('ws');
-const wss = new WebSocket.Server({ port: 8080 });
+const wss = new WebSocket.Server({ port: 3000 });
 
-console.log("WebSocket server running on ws://localhost:8080");
+let clients = new Set();
 
 wss.on('connection', function connection(ws) {
-  console.log("Client connected!");
+  clients.add(ws);
+  console.log('Client connected. Total:', clients.size);
 
-  ws.on('message', function incoming(data) {
-    console.log('Received from client:', data.toString());
-
-    // Reply back to Unity
-    ws.send("Hello from server!");
+  ws.on('message', function incoming(message) {
+    // Broadcast to all other clients
+    for (let client of clients) {
+      if (client !== ws && client.readyState === WebSocket.OPEN) {
+        client.send(message);
+      }
+    }
   });
 
   ws.on('close', () => {
-    console.log("Client disconnected.");
+    clients.delete(ws);
+    console.log('Client disconnected. Total:', clients.size);
   });
 });
