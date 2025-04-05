@@ -8,33 +8,29 @@ const wss = new WebSocket.Server({ server });
 
 let clients = new Set();
 
-// WebSocket connection handling
-wss.on('connection', function connection(ws) {
+wss.on('connection', (ws) => {
   clients.add(ws);
-  console.log('Client connected. Total:', clients.size);
+  console.log('🟢 Client connected. Total:', clients.size);
 
-  ws.on('message', function incoming(message) {
-    // Broadcast to all other clients
+  ws.on('message', (msg) => {
     for (let client of clients) {
       if (client !== ws && client.readyState === WebSocket.OPEN) {
-        client.send(message);
+        client.send(msg);
       }
     }
   });
 
   ws.on('close', () => {
     clients.delete(ws);
-    console.log('Client disconnected. Total:', clients.size);
+    console.log('🔴 Client disconnected. Total:', clients.size);
   });
 });
 
-// HTTP GET to show server status
 app.get('/', (req, res) => {
   res.send(`Server is up: ✅<br>Connected Devices: ${clients.size}`);
 });
 
-// Start server
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`🚀 Server running on port ${PORT}`);
 });

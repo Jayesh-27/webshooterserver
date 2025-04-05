@@ -7,16 +7,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Jayesh-27/Web-Shooter.git"
+    "url": "https://github.com/Jayesh-27/Web-Shooter.git"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Jayesh-27/Web-Shooter/issues"
-  },
-  "homepage": "https://github.com/Jayesh-27/Web-Shooter#readme",
-  "description": "",
   "dependencies": {
     "express": "^4.18.2",
     "ws": "^8.18.1"
